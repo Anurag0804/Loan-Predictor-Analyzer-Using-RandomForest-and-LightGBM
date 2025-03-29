@@ -1,6 +1,5 @@
 
 export interface LoanFormData {
-  loan_id: string;
   no_of_dependents: number;
   education: string;
   self_employed: string;

@@ -14,7 +14,6 @@ interface LoanApplicationFormProps {
 
 const LoanApplicationForm: React.FC<LoanApplicationFormProps> = ({ onSubmit }) => {
   const [formData, setFormData] = useState<LoanFormData>({
-    loan_id: '',
     no_of_dependents: 0,
     education: 'Graduate',
     self_employed: 'No',
@@ -34,7 +33,7 @@ const LoanApplicationForm: React.FC<LoanApplicationFormProps> = ({ onSubmit }) =
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: name === 'loan_id' ? value : Number(value)
+      [name]: Number(value)
     });
   };
 
@@ -59,18 +58,6 @@ const LoanApplicationForm: React.FC<LoanApplicationFormProps> = ({ onSubmit }) =
       <CardContent className="p-6">
         <form onSubmit={handleSubmit}>
           <div className="loan-input-group">
-            <div className="space-y-2">
-              <Label htmlFor="loan_id">Loan ID</Label>
-              <Input
-                id="loan_id"
-                name="loan_id"
-                placeholder="Enter loan ID"
-                value={formData.loan_id}
-                onChange={handleChange}
-                required
-              />
-            </div>
-
             <div className="space-y-2">
               <Label htmlFor="no_of_dependents">Number of Dependents</Label>
               <Input
@@ -97,9 +84,7 @@ const LoanApplicationForm: React.FC<LoanApplicationFormProps> = ({ onSubmit }) =
                 </SelectContent>
               </Select>
             </div>
-          </div>
 
-          <div className="loan-input-group">
             <div className="space-y-2">
               <Label htmlFor="self_employed">Self Employed</Label>
               <Select name="self_employed" onValueChange={(value) => handleSelectChange('self_employed', value)} defaultValue={formData.self_employed}>
@@ -112,7 +97,9 @@ const LoanApplicationForm: React.FC<LoanApplicationFormProps> = ({ onSubmit }) =
                 </SelectContent>
               </Select>
             </div>
+          </div>
 
+          <div className="loan-input-group">
             <div className="space-y-2">
               <Label htmlFor="income_annual">Annual Income (₹)</Label>
               <Input
@@ -140,9 +127,7 @@ const LoanApplicationForm: React.FC<LoanApplicationFormProps> = ({ onSubmit }) =
                 required
               />
             </div>
-          </div>
 
-          <div className="loan-input-group">
             <div className="space-y-2">
               <Label htmlFor="loan_term">Loan Term (months)</Label>
               <Input
@@ -156,7 +141,9 @@ const LoanApplicationForm: React.FC<LoanApplicationFormProps> = ({ onSubmit }) =
                 required
               />
             </div>
+          </div>
 
+          <div className="loan-input-group">
             <div className="space-y-2">
               <Label htmlFor="cibil_score">CIBIL Score</Label>
               <Input
@@ -185,9 +172,7 @@ const LoanApplicationForm: React.FC<LoanApplicationFormProps> = ({ onSubmit }) =
                 required
               />
             </div>
-          </div>
 
-          <div className="loan-input-group">
             <div className="space-y-2">
               <Label htmlFor="commercial_assets_value">Commercial Assets Value (₹)</Label>
               <Input
@@ -201,7 +186,9 @@ const LoanApplicationForm: React.FC<LoanApplicationFormProps> = ({ onSubmit }) =
                 required
               />
             </div>
+          </div>
 
+          <div className="loan-input-group">
             <div className="space-y-2">
               <Label htmlFor="luxury_assets_value">Luxury Assets Value (₹)</Label>
               <Input
