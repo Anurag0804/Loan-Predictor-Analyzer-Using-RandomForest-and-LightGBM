@@ -23,8 +23,7 @@ const LoanApplicationForm: React.FC<LoanApplicationFormProps> = ({ onSubmit }) =
     cibil_score: 750,
     residential_assets_value: 0,
     commercial_assets_value: 0,
-    luxury_assets_value: 0,
-    bank_asset_value: 0
+    luxury_assets_value: 0
   });
 
   const [modelType, setModelType] = useState<ModelType>('RandomForest');
@@ -105,10 +104,11 @@ const LoanApplicationForm: React.FC<LoanApplicationFormProps> = ({ onSubmit }) =
               <Input
                 id="income_annual"
                 name="income_annual"
-                type="number"
-                min="0"
-                placeholder="0"
-                value={formData.income_annual}
+                type="text"
+                inputMode="numeric"
+                pattern="[0-9]*"
+                placeholder="Enter your annual income"
+                value={formData.income_annual || ''}
                 onChange={handleChange}
                 required
               />
@@ -119,10 +119,11 @@ const LoanApplicationForm: React.FC<LoanApplicationFormProps> = ({ onSubmit }) =
               <Input
                 id="loan_amount"
                 name="loan_amount"
-                type="number"
-                min="0"
-                placeholder="0"
-                value={formData.loan_amount}
+                type="text"
+                inputMode="numeric"
+                pattern="[0-9]*"
+                placeholder="Enter loan amount"
+                value={formData.loan_amount || ''}
                 onChange={handleChange}
                 required
               />
@@ -149,11 +150,11 @@ const LoanApplicationForm: React.FC<LoanApplicationFormProps> = ({ onSubmit }) =
               <Input
                 id="cibil_score"
                 name="cibil_score"
-                type="number"
-                min="300"
-                max="900"
-                placeholder="750"
-                value={formData.cibil_score}
+                type="text"
+                inputMode="numeric"
+                pattern="[0-9]*"
+                placeholder="Enter your CIBIL score (300-900)"
+                value={formData.cibil_score || ''}
                 onChange={handleChange}
                 required
               />
@@ -164,10 +165,11 @@ const LoanApplicationForm: React.FC<LoanApplicationFormProps> = ({ onSubmit }) =
               <Input
                 id="residential_assets_value"
                 name="residential_assets_value"
-                type="number"
-                min="0"
-                placeholder="0"
-                value={formData.residential_assets_value}
+                type="text"
+                inputMode="numeric"
+                pattern="[0-9]*"
+                placeholder="Enter residential assets value"
+                value={formData.residential_assets_value || ''}
                 onChange={handleChange}
                 required
               />
@@ -178,10 +180,11 @@ const LoanApplicationForm: React.FC<LoanApplicationFormProps> = ({ onSubmit }) =
               <Input
                 id="commercial_assets_value"
                 name="commercial_assets_value"
-                type="number"
-                min="0"
-                placeholder="0"
-                value={formData.commercial_assets_value}
+                type="text"
+                inputMode="numeric"
+                pattern="[0-9]*"
+                placeholder="Enter commercial assets value"
+                value={formData.commercial_assets_value || ''}
                 onChange={handleChange}
                 required
               />
@@ -194,24 +197,11 @@ const LoanApplicationForm: React.FC<LoanApplicationFormProps> = ({ onSubmit }) =
               <Input
                 id="luxury_assets_value"
                 name="luxury_assets_value"
-                type="number"
-                min="0"
-                placeholder="0"
-                value={formData.luxury_assets_value}
-                onChange={handleChange}
-                required
-              />
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="bank_asset_value">Bank Assets Value (₹)</Label>
-              <Input
-                id="bank_asset_value"
-                name="bank_asset_value"
-                type="number"
-                min="0"
-                placeholder="0"
-                value={formData.bank_asset_value}
+                type="text"
+                inputMode="numeric"
+                pattern="[0-9]*"
+                placeholder="Enter luxury assets value"
+                value={formData.luxury_assets_value || ''}
                 onChange={handleChange}
                 required
               />

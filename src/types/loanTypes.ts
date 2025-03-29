@@ -10,7 +10,6 @@ export interface LoanFormData {
   residential_assets_value: number;
   commercial_assets_value: number;
   luxury_assets_value: number;
-  bank_asset_value: number;
 }
 
 export interface PredictionResult {

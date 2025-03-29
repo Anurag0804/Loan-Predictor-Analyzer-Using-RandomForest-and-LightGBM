@@ -22,7 +22,6 @@ export const predictLoanApproval = (formData: LoanFormData, modelType: ModelType
     processedData.cibil_score > 700, // Good credit score
     processedData.income_annual > 3 * processedData.loan_amount, // Income is 3x loan amount
     processedData.education_Graduate === 1, // Graduate education
-    processedData.bank_asset_value > processedData.loan_amount * 0.5, // Significant bank assets
     (processedData.residential_assets_value + processedData.commercial_assets_value) > processedData.loan_amount, // Assets > loan amount
   ];
   
