@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { LoanFormData, ModelType } from '@/types/loanTypes';
 import { Input } from '@/components/ui/input';
@@ -30,9 +29,11 @@ const LoanApplicationForm: React.FC<LoanApplicationFormProps> = ({ onSubmit }) =
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
+    // Allow empty string to be converted to 0 for numeric fields
+    const numericValue = value === '' ? 0 : Number(value);
     setFormData({
       ...formData,
-      [name]: Number(value)
+      [name]: numericValue
     });
   };
 
@@ -169,7 +170,7 @@ const LoanApplicationForm: React.FC<LoanApplicationFormProps> = ({ onSubmit }) =
                 inputMode="numeric"
                 pattern="[0-9]*"
                 placeholder="Enter residential assets value"
-                value={formData.residential_assets_value || ''}
+                value={formData.residential_assets_value === 0 ? '0' : formData.residential_assets_value || ''}
                 onChange={handleChange}
                 required
               />
@@ -184,7 +185,7 @@ const LoanApplicationForm: React.FC<LoanApplicationFormProps> = ({ onSubmit }) =
                 inputMode="numeric"
                 pattern="[0-9]*"
                 placeholder="Enter commercial assets value"
-                value={formData.commercial_assets_value || ''}
+                value={formData.commercial_assets_value === 0 ? '0' : formData.commercial_assets_value || ''}
                 onChange={handleChange}
                 required
               />
@@ -201,7 +202,7 @@ const LoanApplicationForm: React.FC<LoanApplicationFormProps> = ({ onSubmit }) =
                 inputMode="numeric"
                 pattern="[0-9]*"
                 placeholder="Enter luxury assets value"
-                value={formData.luxury_assets_value || ''}
+                value={formData.luxury_assets_value === 0 ? '0' : formData.luxury_assets_value || ''}
                 onChange={handleChange}
                 required
               />
